@@ -57,9 +57,44 @@ if (btnWakeUp) {
 }());
 
 /* ============================================================
+   PUZZLE 1 — Q1 Report Submit
+============================================================ */
+function playChime() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const gain = ctx.createGain();
+    gain.connect(ctx.destination);
+    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+
+    const osc = ctx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(784, ctx.currentTime);       // G5
+    osc.frequency.setValueAtTime(1047, ctx.currentTime + 0.07); // C6
+    osc.connect(gain);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.55);
+  } catch (e) {}
+}
+
+document.getElementById('btn-submit-q1').addEventListener('click', function () {
+  playChime();
+
+  gameState.keysFound = 1;
+  document.getElementById('key-counter').classList.remove('hidden');
+  document.getElementById('key-count').textContent = '1';
+
+  gameState.currentTask = 2;
+  updateTaskList();
+
+  this.disabled = true;
+  this.textContent = 'Submitted';
+});
+
+/* ============================================================
    DECORATIVE CHARTS
    Called once after the dashboard becomes visible.
-   Guard prevents double-initialisation.
+   Guard prevents double-initialization.
 ============================================================ */
 function initCharts() {
   if (initCharts._done) return;
