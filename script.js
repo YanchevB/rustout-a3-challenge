@@ -57,7 +57,7 @@ if (btnWakeUp) {
 }());
 
 /* ============================================================
-   PUZZLE 1 — Q1 Report Submit
+   SHARED UTILITIES
 ============================================================ */
 function playChime() {
   try {
@@ -77,6 +77,41 @@ function playChime() {
   } catch (e) {}
 }
 
+let toastActive = false;
+
+function showToast(msg, duration) {
+  toastActive = true;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+
+  const text = document.createElement('span');
+  text.textContent = msg;
+
+  const close = document.createElement('button');
+  close.className = 'toast-close';
+  close.setAttribute('aria-label', 'Dismiss');
+  close.textContent = '✕';
+
+  toast.appendChild(text);
+  toast.appendChild(close);
+  document.body.appendChild(toast);
+
+  requestAnimationFrame(() => toast.classList.add('toast-visible'));
+
+  function dismiss() {
+    toastActive = false;
+    toast.classList.remove('toast-visible');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+  }
+
+  close.addEventListener('click', dismiss);
+  setTimeout(dismiss, duration || 3000);
+}
+
+/* ============================================================
+   PUZZLE 1 — Q1 Report Submit
+============================================================ */
 document.getElementById('btn-submit-q1').addEventListener('click', function () {
   playChime();
 
@@ -188,37 +223,6 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 ============================================================ */
 (function () {
   let done = false;
-  let toastActive = false;
-
-  function showToast(msg, duration) {
-    toastActive = true;
-
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-
-    const text = document.createElement('span');
-    text.textContent = msg;
-
-    const close = document.createElement('button');
-    close.className = 'toast-close';
-    close.setAttribute('aria-label', 'Dismiss');
-    close.textContent = '✕';
-
-    toast.appendChild(text);
-    toast.appendChild(close);
-    document.body.appendChild(toast);
-
-    requestAnimationFrame(() => toast.classList.add('toast-visible'));
-
-    function dismiss() {
-      toastActive = false;
-      toast.classList.remove('toast-visible');
-      toast.addEventListener('transitionend', () => toast.remove(), { once: true });
-    }
-
-    close.addEventListener('click', dismiss);
-    setTimeout(dismiss, duration || 3000);
-  }
 
   document.querySelectorAll('.expense-item:not(#expense-top)').forEach(function (item) {
     item.addEventListener('click', function () {
@@ -306,6 +310,55 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   submitBtn.addEventListener('click', tryPassword);
   passwordInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') tryPassword();
+  });
+}());
+
+/* ============================================================
+   PUZZLE 5 — Withdraw All Assets
+============================================================ */
+(function () {
+  document.getElementById('btn-withdraw').addEventListener('click', function () {
+    this.disabled = true;
+    this.textContent = 'Withdrawing…';
+
+    const cells = Array.from(
+      document.querySelectorAll('#panel-assets .asset-table td.text-right')
+    );
+    const startValues = cells.map(function (cell) {
+      return parseInt(cell.textContent.replace(/[€,]/g, ''), 10);
+    });
+
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function format(n) {
+      return '€' + Math.round(n).toLocaleString('en-GB');
+    }
+
+    function tick(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+
+      cells.forEach(function (cell, i) {
+        cell.textContent = format(startValues[i] * (1 - progress));
+      });
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        cells.forEach(function (cell) { cell.textContent = '€0'; });
+
+        document.getElementById('btn-withdraw').textContent = 'Action done';
+
+        gameState.currentTask = 6;
+        updateTaskList();
+
+        setTimeout(function () {
+          showToast("This feels suffocating, now's the time to escape!", 6000);
+        }, 500);
+      }
+    }
+
+    requestAnimationFrame(tick);
   });
 }());
 
