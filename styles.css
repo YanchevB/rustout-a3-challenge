@@ -642,11 +642,6 @@ body {
   border-radius: 8px;
   background: var(--bg);
   border: 1px solid var(--border);
-}
-
-.expense-top {
-  background: #fef2f2;
-  border-color: #fecaca;
   cursor: pointer;
 }
 
@@ -662,7 +657,6 @@ body {
   color: var(--text);
 }
 
-.expense-top .expense-name { color: #991b1b; }
 
 .expense-category {
   font-size: 0.67rem;
@@ -678,7 +672,6 @@ body {
   white-space: nowrap;
 }
 
-.expense-top .expense-amount { color: #991b1b; }
 
 /* ============================================================
    PANEL SLOT — grid wrapper for stacked decoy + asset panels
@@ -844,3 +837,45 @@ body {
 
 .btn-danger { background: #dc2626; }
 .btn-danger:hover { background: #b91c1c; }
+
+/* ============================================================
+   TOAST (Puzzle 3+)
+============================================================ */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  max-width: 400px;
+  width: max-content;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.toast.toast-visible { opacity: 1; }
+
+.toast-close {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  opacity: 0.5;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.toast-close:hover { opacity: 1; }
