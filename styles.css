@@ -40,7 +40,7 @@ body {
 ============================================================ */
 .btn-primary {
   display: inline-block;
-  padding: 12px 32px;
+  padding: 9px 32px;
   background: var(--accent);
   color: #fff;
   font-family: var(--font);
@@ -454,3 +454,332 @@ body {
   border-radius: 50%;
   flex-shrink: 0;
 }
+
+/* ============================================================
+   Q1 REPORT PANEL (Puzzle 1)
+============================================================ */
+.report-summary {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.report-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.report-row:last-child {
+  border-bottom: none;
+}
+
+.report-label { color: var(--text-muted); }
+
+.report-value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.report-value-pos { color: #16a34a; }
+.report-value-neg { color: #dc2626; }
+
+.report-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.panel-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+/* ============================================================
+   BUDGET TABLE (Puzzle 2)
+============================================================ */
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-bottom: 12px;
+}
+
+.budget-table th {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.budget-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.budget-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.text-right { text-align: right; }
+
+.text-left { text-align: left; }
+
+.budget-total-row td {
+  font-weight: 700;
+  border-top: 2px solid var(--border);
+  border-bottom: none;
+  background: var(--bg);
+  padding-top: 10px;
+}
+
+.budget-total {
+  border-bottom: 2px dashed var(--accent);
+  cursor: pointer;
+  color: var(--accent);
+  transition: opacity 0.15s ease;
+}
+
+.budget-total:hover { opacity: 0.7; }
+
+.budget-note {
+  font-size: 0.72rem;
+  color: #92400e;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 8px 10px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   EXPENSE BREAKDOWN (Puzzle 3)
+============================================================ */
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.expense-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.expense-top {
+  background: #fef2f2;
+  border-color: #fecaca;
+  cursor: pointer;
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.expense-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.expense-top .expense-name { color: #991b1b; }
+
+.expense-category {
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.expense-amount {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.expense-top .expense-amount { color: #991b1b; }
+
+/* ============================================================
+   PANEL SLOT — grid wrapper for stacked decoy + asset panels
+============================================================ */
+.panel-slot {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+/* ============================================================
+   DECOY PANEL (Internal Announcements — Puzzle 4 trigger)
+============================================================ */
+.panel-header-closeable {
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.panel-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: background 0.1s ease, color 0.1s ease;
+  flex-shrink: 0;
+}
+
+.btn-close:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.announcement-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.announcement-list li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  background: var(--bg);
+  border-radius: 6px;
+  border-left: 3px solid var(--border);
+  line-height: 1.5;
+}
+
+.announcement-list li:last-child {
+  border-left-color: var(--accent);
+  color: var(--text);
+}
+
+/* ============================================================
+   ASSET PANEL (Puzzle 4 — password: greed)
+============================================================ */
+#panel-assets {
+  position: relative;
+  overflow: hidden;
+}
+
+.asset-lock {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius);
+  z-index: 10;
+  padding: 24px;
+}
+
+.asset-lock-icon {
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.asset-lock-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.asset-lock-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.asset-lock-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.asset-password-input {
+  font-family: var(--font);
+  font-size: 0.875rem;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  color: var(--text);
+  background: var(--surface);
+  width: 160px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.asset-password-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.asset-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+}
+
+.asset-table th {
+  text-align: left;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 12px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.asset-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.asset-table tfoot td {
+  font-weight: 700;
+  border-top: 2px solid var(--border);
+  border-bottom: none;
+  background: var(--bg);
+  padding-top: 10px;
+}
+
+.btn-danger { background: #dc2626; }
+.btn-danger:hover { background: #b91c1c; }
