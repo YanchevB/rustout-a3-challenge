@@ -247,7 +247,9 @@ body {
   margin-left: 220px;
   margin-top: 56px;
   padding: 24px;
-  min-height: calc(100vh - 56px);
+  height: calc(100vh - 56px); /* fixed height — becomes the scroll container */
+  overflow-x: hidden;         /* horizontal never scrolls */
+  overflow-y: hidden;         /* vertical locked; JS sets to 'auto' in Task 3 */
 }
 
 .panel-grid {
@@ -265,6 +267,7 @@ body {
   box-shadow: var(--shadow);
   padding: 20px;
   min-height: 160px;
+  min-width: 0;   /* grid cells must be allowed to shrink below content width */
   display: flex;
   flex-direction: column;
 }
