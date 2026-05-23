@@ -552,12 +552,68 @@ body {
 
 .budget-total {
   border-bottom: 2px dashed var(--accent);
-  cursor: pointer;
+  cursor: not-allowed;
   color: var(--accent);
   transition: opacity 0.15s ease;
 }
 
-.budget-total:hover { opacity: 0.7; }
+.budget-total.budget-active { cursor: pointer; }
+.budget-total.budget-active:hover { opacity: 0.7; }
+
+/* ============================================================
+   PUZZLE 2 — Budget Edit
+============================================================ */
+.budget-edit-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.budget-input {
+  width: 100px;
+  padding: 3px 7px;
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: var(--font);
+  color: var(--text);
+  outline: none;
+  text-align: right;
+}
+
+.budget-confirm {
+  padding: 3px 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+.budget-confirm:hover { background: #5a52e0; }
+
+.budget-error {
+  font-size: 0.72rem;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+.budget-message {
+  font-size: 0.78rem;
+  color: #16a34a;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.budget-solved {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: default;
+  border-bottom-style: solid;
+}
 
 .budget-note {
   font-size: 0.72rem;
