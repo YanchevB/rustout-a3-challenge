@@ -150,7 +150,6 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 
         gameState.currentTask = 3;
         updateTaskList();
-        document.querySelector('.main-content').style.overflowY = 'auto';
 
         document.getElementById('panel-expenses').classList.remove('panel-blurred');
 
@@ -181,6 +180,69 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') validate();
     });
+  });
+}());
+
+/* ============================================================
+   PUZZLE 3 — Expense Click
+============================================================ */
+(function () {
+  let done = false;
+  let toastActive = false;
+
+  function showToast(msg, duration) {
+    toastActive = true;
+
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+
+    const text = document.createElement('span');
+    text.textContent = msg;
+
+    const close = document.createElement('button');
+    close.className = 'toast-close';
+    close.setAttribute('aria-label', 'Dismiss');
+    close.textContent = '✕';
+
+    toast.appendChild(text);
+    toast.appendChild(close);
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => toast.classList.add('toast-visible'));
+
+    function dismiss() {
+      toastActive = false;
+      toast.classList.remove('toast-visible');
+      toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+    }
+
+    close.addEventListener('click', dismiss);
+    setTimeout(dismiss, duration || 3000);
+  }
+
+  document.querySelectorAll('.expense-item:not(#expense-top)').forEach(function (item) {
+    item.addEventListener('click', function () {
+      if (done || toastActive) return;
+      showToast("No, that doesn't seem to be it.");
+    });
+  });
+
+  document.getElementById('expense-top').addEventListener('click', function () {
+    if (done) return;
+    done = true;
+
+    playChime();
+
+    gameState.keysFound = 3;
+    document.getElementById('key-count').textContent = '3';
+
+    gameState.scrollUnlocked = true;
+    document.querySelector('.main-content').style.overflowY = 'auto';
+
+    showToast("You found something you weren't supposed to see. The way down is open now.", 6000);
+
+    gameState.currentTask = 4;
+    updateTaskList();
   });
 }());
 
