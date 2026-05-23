@@ -125,11 +125,36 @@
         <!-- Q1 Report — Puzzle 1 -->
         <div class="panel panel-wide" id="panel-q1">
           <div class="panel-header">
-            <span class="panel-title">Q1 Report</span>
-            <span class="panel-subtitle">Q1 2025 · Final Draft</span>
+            <span class="panel-title">Q1 Report — January to March</span>
+            <span class="panel-subtitle">Q1 2025 · Final Draft · Pending Submission</span>
           </div>
           <div class="panel-body">
-            <p class="panel-placeholder">Awaiting submission&hellip;</p>
+            <div class="report-summary">
+              <div class="report-row">
+                <span class="report-label">Total Revenue</span>
+                <span class="report-value">€2,400,000</span>
+              </div>
+              <div class="report-row">
+                <span class="report-label">Total Costs</span>
+                <span class="report-value">€1,890,000</span>
+              </div>
+              <div class="report-row">
+                <span class="report-label">Net Profit</span>
+                <span class="report-value report-value-pos">€510,000</span>
+              </div>
+              <div class="report-row">
+                <span class="report-label">Growth vs Q4 2024</span>
+                <span class="report-value report-value-neg">&minus;3.2%</span>
+              </div>
+              <div class="report-row">
+                <span class="report-label">Headcount (end of period)</span>
+                <span class="report-value">142</span>
+              </div>
+            </div>
+            <p class="report-note">All figures are preliminary. Submission locks this report for board review.</p>
+            <div class="panel-actions">
+              <button class="btn-primary" id="btn-submit-q1">Submit Report</button>
+            </div>
           </div>
         </div>
 
@@ -137,10 +162,38 @@
         <div class="panel panel-wide" id="panel-budget">
           <div class="panel-header">
             <span class="panel-title">Budget Calculations</span>
-            <span class="panel-subtitle">FY 2025</span>
+            <span class="panel-subtitle">FY 2025 · Q1 Actuals</span>
           </div>
           <div class="panel-body">
-            <p class="panel-placeholder">Pending review&hellip;</p>
+            <table class="budget-table">
+              <thead>
+                <tr>
+                  <th class="text-left">Month</th>
+                  <th class="text-right">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>January</td>
+                  <td class="text-right">€4,200</td>
+                </tr>
+                <tr>
+                  <td>February</td>
+                  <td class="text-right">€3,800</td>
+                </tr>
+                <tr>
+                  <td>March</td>
+                  <td class="text-right">€5,100</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="budget-total-row">
+                  <td>Q1 Total</td>
+                  <td id="budget-total" class="budget-total text-right" title="Something looks off — click to correct">€14,600</td>
+                </tr>
+              </tfoot>
+            </table>
+            <p class="budget-note">The total does not match the sum of monthly figures. Please review and correct.</p>
           </div>
         </div>
 
@@ -258,12 +311,149 @@
         <div class="panel panel-wide panel-blurred" id="panel-expenses">
           <div class="panel-header">
             <span class="panel-title">Expense Breakdown</span>
-            <span class="panel-subtitle">Monthly breakdown</span>
+            <span class="panel-subtitle">Q1 2025 · All Categories</span>
           </div>
           <div class="panel-body">
-            <p class="panel-placeholder">Access restricted</p>
+            <div class="expense-list">
+              <div class="expense-item expense-top" id="expense-top">
+                <div class="expense-info">
+                  <span class="expense-name">Executive Discretionary Fund</span>
+                  <span class="expense-category">Executive</span>
+                </div>
+                <span class="expense-amount">€28,400</span>
+              </div>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Travel &amp; Accommodation</span>
+                  <span class="expense-category">Operations</span>
+                </div>
+                <span class="expense-amount">€11,200</span>
+              </div>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Software Licenses</span>
+                  <span class="expense-category">Technology</span>
+                </div>
+                <span class="expense-amount">€8,900</span>
+              </div>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Team Events &amp; Offsite</span>
+                  <span class="expense-category">People</span>
+                </div>
+                <span class="expense-amount">€4,100</span>
+              </div>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Office Supplies</span>
+                  <span class="expense-category">Facilities</span>
+                </div>
+                <span class="expense-amount">€3,200</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- =====================================================
+             PANEL SLOT — decoy on top, asset panel beneath
+             Both occupy the same grid cell; JS swaps visibility.
+        ===================================================== -->
+        <div class="panel-slot" id="panel-asset-slot">
+
+          <!-- Decoy panel — Internal Announcements (Puzzle 4 trigger) -->
+          <!-- X button is hidden; JS reveals it after Puzzle 3 completes -->
+          <div class="panel" id="panel-cover">
+            <div class="panel-header panel-header-closeable">
+              <div class="panel-header-text">
+                <span class="panel-title">Internal Announcements</span>
+                <span class="panel-subtitle">From the desk of the CEO</span>
+              </div>
+              <button class="btn-close hidden" id="btn-close-cover" title="Dismiss">&#x2715;</button>
+            </div>
+            <div class="panel-body">
+              <ul class="announcement-list">
+                <li>Q1 reports must be submitted by end of week. No extensions will be granted.</li>
+                <li>Monday morning synergy sessions will now run until noon. Attendance is mandatory and will be tracked.</li>
+                <li>All expenses above €500 require pre-approval from your line manager. Exceptions apply at the executive level.</li>
+                <li>Our Core Company Value of <strong>GREED</strong> continues to be the driving force behind all performance targets this quarter.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Asset panel — hidden until decoy is closed (Puzzle 4) -->
+          <div class="panel hidden" id="panel-assets">
+            <!-- Password lock overlay — removed by JS on correct submission -->
+            <div class="asset-lock" id="asset-lock">
+              <div class="asset-lock-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="5" y="13" width="18" height="12" rx="3"/>
+                  <path d="M9 13V9a5 5 0 0 1 10 0v4"/>
+                  <circle cx="14" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </div>
+              <p class="asset-lock-title">Access Restricted</p>
+              <p class="asset-lock-sub">Senior executive clearance required</p>
+              <div class="asset-lock-form">
+                <input class="asset-password-input" type="password" id="asset-password" placeholder="Enter password" autocomplete="off" />
+                <button class="btn-primary" id="btn-asset-submit">Unlock</button>
+              </div>
+            </div>
+            <!-- Asset table (visible behind overlay; fully revealed on unlock) -->
+            <div class="panel-header">
+              <span class="panel-title">Company Assets — Consolidated</span>
+              <span class="panel-subtitle">Fiscal Year 2025 · For internal use only</span>
+            </div>
+            <div class="panel-body">
+              <table class="asset-table">
+                <thead>
+                  <tr>
+                    <th>Asset Description</th>
+                    <th>Details</th>
+                    <th class="text-right">Valuation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Villa &mdash; C&ocirc;te d&apos;Azur</td>
+                    <td>Nice, France</td>
+                    <td class="text-right">€2,400,000</td>
+                  </tr>
+                  <tr>
+                    <td>Superyacht &ldquo;The Profit&rdquo;</td>
+                    <td>Monaco Registry</td>
+                    <td class="text-right">€4,800,000</td>
+                  </tr>
+                  <tr>
+                    <td>Bentley Continental GT</td>
+                    <td>Reg. NX-001</td>
+                    <td class="text-right">€190,000</td>
+                  </tr>
+                  <tr>
+                    <td>Holiday Home &mdash; Marbella</td>
+                    <td>Costa del Sol, Spain</td>
+                    <td class="text-right">€870,000</td>
+                  </tr>
+                  <tr>
+                    <td>Private Wine Collection</td>
+                    <td>Geneva Storage</td>
+                    <td class="text-right">€145,000</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="2">Total Valuation</td>
+                    <td class="text-right" id="asset-total">€8,405,000</td>
+                  </tr>
+                </tfoot>
+              </table>
+              <!-- Withdraw button — hidden until Task 5 begins -->
+              <div class="panel-actions hidden" id="btn-withdraw-wrapper">
+                <button class="btn-primary btn-danger" id="btn-withdraw">Withdraw All Assets</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-asset-slot -->
 
       </div>
     </main>
