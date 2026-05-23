@@ -1,0 +1,94 @@
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:          #f8f9fa;
+  --surface:     #ffffff;
+  --accent:      #6C63FF;
+  --accent-light:#ede9ff;
+  --text:        #1a1a2e;
+  --text-muted:  #6b7280;
+  --border:      #e5e7eb;
+  --shadow:      0 1px 4px rgba(0, 0, 0, 0.08);
+  --radius:      12px;
+  --font:        'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow: hidden; /* locked until scroll is earned */
+}
+
+/* ============================================================
+   UTILITY
+============================================================ */
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn-primary {
+  display: inline-block;
+  padding: 12px 32px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: #5a52e0;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================
+   VIEW 1 — LANDING PAGE
+============================================================ */
+#landing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.landing-inner {
+  text-align: center;
+  max-width: 540px;
+}
+
+.landing-title {
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.landing-flavour {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
