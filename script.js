@@ -247,6 +247,69 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 }());
 
 /* ============================================================
+   PUZZLE 4 — Decoy Close + Asset Password
+============================================================ */
+(function () {
+  // Step 1: reveal X button once task 4 is reached.
+  // We watch for updateTaskList calls by wrapping it.
+  const _origUpdate = updateTaskList;
+  updateTaskList = function () {
+    _origUpdate();
+    if (gameState.currentTask === 4) {
+      document.getElementById('btn-close-cover').classList.remove('hidden');
+    }
+  };
+
+  // Step 2: X closes decoy, reveals asset panel.
+  document.getElementById('btn-close-cover').addEventListener('click', function () {
+    document.getElementById('panel-cover').classList.add('hidden');
+    document.getElementById('panel-assets').classList.remove('hidden');
+  });
+
+  // Step 3: password form.
+  const passwordInput = document.getElementById('asset-password');
+  const submitBtn = document.getElementById('btn-asset-submit');
+  const assetLock = document.getElementById('asset-lock');
+
+  const errorEl = document.createElement('p');
+  errorEl.className = 'asset-error hidden';
+  errorEl.textContent = 'Access denied.';
+  assetLock.appendChild(errorEl);
+
+  function tryPassword() {
+    if (passwordInput.value.trim().toLowerCase() !== 'greed') {
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    // Correct — remove overlay.
+    assetLock.classList.add('hidden');
+    errorEl.classList.add('hidden');
+
+    gameState.keysFound = 4;
+    document.getElementById('key-count').textContent = '4';
+
+    gameState.currentTask = 5;
+    updateTaskList();
+
+    playChime();
+
+    const msg = document.createElement('p');
+    msg.className = 'asset-success';
+    msg.textContent = 'Full access granted.';
+    document.getElementById('panel-assets').appendChild(msg);
+    requestAnimationFrame(() => { msg.style.opacity = '1'; });
+
+    document.getElementById('btn-withdraw-wrapper').classList.remove('hidden');
+  }
+
+  submitBtn.addEventListener('click', tryPassword);
+  passwordInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') tryPassword();
+  });
+}());
+
+/* ============================================================
    DECORATIVE CHARTS
    Called once after the dashboard becomes visible.
    Guard prevents double-initialization.
