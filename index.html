@@ -194,42 +194,49 @@
           </div>
         </div>
 
-        <!-- Company overview KPI grid — hint for Puzzle 4 embedded -->
-        <div class="panel" id="panel-kpi-value">
+        <!-- Expense Breakdown — Puzzle 3, blurred until Puzzle 2 complete -->
+        <div class="panel panel-wide panel-blurred" id="panel-expenses">
           <div class="panel-header">
-            <span class="panel-title">Company Overview</span>
+            <span class="panel-title">Expense Breakdown</span>
+            <span class="panel-subtitle">Q1 2025 · All Categories</span>
           </div>
           <div class="panel-body">
-            <div class="kpi-grid">
-              <div class="kpi-box">
-                <span class="kpi-box-num">142</span>
-                <span class="kpi-box-label">Total Employees</span>
+            <div class="expense-list">
+              <div class="expense-item expense-top" id="expense-top">
+                <div class="expense-info">
+                  <span class="expense-name">Executive Discretionary Fund</span>
+                  <span class="expense-category">Executive</span>
+                </div>
+                <span class="expense-amount">€28,400</span>
               </div>
-              <div class="kpi-box">
-                <span class="kpi-box-num">11h</span>
-                <span class="kpi-box-label">Avg Meeting Hours/Week</span>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Travel &amp; Accommodation</span>
+                  <span class="expense-category">Operations</span>
+                </div>
+                <span class="expense-amount">€11,200</span>
               </div>
-              <div class="kpi-box">
-                <span class="kpi-box-num">847</span>
-                <span class="kpi-box-label">Days Since Last Raise</span>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Software Licenses</span>
+                  <span class="expense-category">Technology</span>
+                </div>
+                <span class="expense-amount">€8,900</span>
               </div>
-              <div class="kpi-box kpi-box-accent">
-                <span class="kpi-box-num">GREED</span>
-                <span class="kpi-box-label">Core Company Value</span>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Team Events &amp; Offsite</span>
+                  <span class="expense-category">People</span>
+                </div>
+                <span class="expense-amount">€4,100</span>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Headcount bar chart — decorative -->
-        <div class="panel" id="panel-headcount">
-          <div class="panel-header">
-            <span class="panel-title">Headcount by Department</span>
-            <span class="panel-subtitle">Q4 2025</span>
-          </div>
-          <div class="panel-body">
-            <div class="chart-container">
-              <canvas id="chart-headcount"></canvas>
+              <div class="expense-item">
+                <div class="expense-info">
+                  <span class="expense-name">Office Supplies</span>
+                  <span class="expense-category">Facilities</span>
+                </div>
+                <span class="expense-amount">€3,200</span>
+              </div>
             </div>
           </div>
         </div>
@@ -304,52 +311,45 @@
           </div>
         </div>
 
-        <!-- Expense Breakdown — Puzzle 3, blurred until Puzzle 2 complete -->
-        <div class="panel panel-wide panel-blurred" id="panel-expenses">
-          <div class="panel-header">
-            <span class="panel-title">Expense Breakdown</span>
-            <span class="panel-subtitle">Q1 2025 · All Categories</span>
-          </div>
-          <div class="panel-body">
-            <div class="expense-list">
-              <div class="expense-item expense-top" id="expense-top">
-                <div class="expense-info">
-                  <span class="expense-name">Executive Discretionary Fund</span>
-                  <span class="expense-category">Executive</span>
-                </div>
-                <span class="expense-amount">€28,400</span>
-              </div>
-              <div class="expense-item">
-                <div class="expense-info">
-                  <span class="expense-name">Travel &amp; Accommodation</span>
-                  <span class="expense-category">Operations</span>
-                </div>
-                <span class="expense-amount">€11,200</span>
-              </div>
-              <div class="expense-item">
-                <div class="expense-info">
-                  <span class="expense-name">Software Licenses</span>
-                  <span class="expense-category">Technology</span>
-                </div>
-                <span class="expense-amount">€8,900</span>
-              </div>
-              <div class="expense-item">
-                <div class="expense-info">
-                  <span class="expense-name">Team Events &amp; Offsite</span>
-                  <span class="expense-category">People</span>
-                </div>
-                <span class="expense-amount">€4,100</span>
-              </div>
-              <div class="expense-item">
-                <div class="expense-info">
-                  <span class="expense-name">Office Supplies</span>
-                  <span class="expense-category">Facilities</span>
-                </div>
-                <span class="expense-amount">€3,200</span>
-              </div>
+      <!-- Company overview KPI grid — hint for Puzzle 4 embedded -->
+      <div class="panel" id="panel-kpi-value">
+        <div class="panel-header">
+          <span class="panel-title">Company Overview</span>
+        </div>
+        <div class="panel-body">
+          <div class="kpi-grid">
+            <div class="kpi-box">
+              <span class="kpi-box-num">142</span>
+              <span class="kpi-box-label">Total Employees</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-box-num">11h</span>
+              <span class="kpi-box-label">Avg Meeting Hours/Week</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-box-num">847</span>
+              <span class="kpi-box-label">Days Since Last Raise</span>
+            </div>
+            <div class="kpi-box kpi-box-accent">
+              <span class="kpi-box-num">GREED</span>
+              <span class="kpi-box-label">Core Company Value</span>
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Headcount bar chart — decorative -->
+      <div class="panel" id="panel-headcount">
+        <div class="panel-header">
+          <span class="panel-title">Headcount by Department</span>
+          <span class="panel-subtitle">Q4 2025</span>
+        </div>
+        <div class="panel-body">
+          <div class="chart-container">
+            <canvas id="chart-headcount"></canvas>
+          </div>
+        </div>
+      </div>
 
         <!-- =====================================================
              PANEL SLOT — decoy on top, asset panel beneath
