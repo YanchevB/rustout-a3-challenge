@@ -11,7 +11,10 @@
   <!-- ============================================================
        VIEW 1 — LANDING PAGE
   ============================================================ -->
-  <section id="landing">
+
+  <!-- Make sure to uncomment -->
+
+  <!-- <section id="landing">
     <div class="landing-inner">
       <h1 class="landing-title">RUST-OUT</h1>
       <p class="landing-flavour">
@@ -21,15 +24,253 @@
       </p>
       <button class="btn-primary" id="btn-wake-up">Wake Up</button>
     </div>
-  </section>
+  </section> -->
 
   <!-- ============================================================
        VIEW 2 — DASHBOARD (hidden until Wake Up is clicked)
   ============================================================ -->
-  <div id="dashboard" class="hidden">
-    <!-- placeholder — built in the next step -->
+  <div id="dashboard" class=""> 
+    <!-- default state - hidden -->
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="sidebar-logo">
+        <div class="logo-mark"></div>
+        <span class="logo-name">Nexus Corp</span>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <a href="#" class="nav-item active">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1h6v6H1zM9 1h6v6H9zM1 9h6v6H1zM9 9h6v6H9"/>
+            </svg>
+          </span>
+          Dashboard
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 10h3v4H1zM5 6h3v8H5zM9 3h3v11H9zM13 1h2v13h-2z"/>
+            </svg>
+          </span>
+          Reports
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="14" rx="2"/>
+              <path d="M1 6h14M1 10h14M6 1v14"/>
+            </svg>
+          </span>
+          Budget
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 1h8a1 1 0 0 1 1 1v12l-1.5-1-1.5 1-1.5-1-1.5 1-1.5-1L4 14V2a1 1 0 0 1 1-1z"/>
+              <path d="M6 5h4M6 8h4M6 11h2"/>
+            </svg>
+          </span>
+          Expenses
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 14h14"/>
+              <path d="M3 14V8M7 14V8M11 14V8M15 14V8"/>
+              <path d="M2 8L8 2l6 6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Assets
+        </a>
+
+        <a href="#" class="nav-item">
+          <span class="nav-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="2.5"/>
+              <path d="M8 1.5V3M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1.05 1.05M11.55 11.55l1.05 1.05M3.4 12.6l1.05-1.05M11.55 4.45l1.05-1.05"/>
+            </svg>
+          </span>
+          Settings
+        </a>
+
+      </nav>
+
+      <div class="task-list">
+        <p class="task-label">Current Task</p>
+        <p class="task-text" id="task-text">Loading task...</p>
+      </div>
+
+    </aside>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <span class="topbar-company">Personal statistics</span>
+      <div class="key-counter hidden" id="key-counter">
+        🔑 x<span id="key-count">0</span>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="panel-grid">
+
+        <!-- Q1 Report — Puzzle 1 -->
+        <div class="panel panel-wide" id="panel-q1">
+          <div class="panel-header">
+            <span class="panel-title">Q1 Report</span>
+            <span class="panel-subtitle">Q1 2025 · Final Draft</span>
+          </div>
+          <div class="panel-body">
+            <p class="panel-placeholder">Awaiting submission&hellip;</p>
+          </div>
+        </div>
+
+        <!-- Revenue — decorative -->
+        <div class="panel panel-wide" id="panel-revenue">
+          <div class="panel-header">
+            <span class="panel-title">Revenue</span>
+            <span class="panel-subtitle">Current fiscal year · Updated daily</span>
+          </div>
+          <div class="panel-body revenue-stats">
+            <div class="revenue-stat">
+              <span class="revenue-value">€2.4M</span>
+              <span class="revenue-label">Total Revenue</span>
+              <span class="revenue-delta delta-neg">↓ 3.2% vs last quarter</span>
+            </div>
+            <div class="revenue-stat">
+              <span class="revenue-value">€892K</span>
+              <span class="revenue-label">Annual Recurring</span>
+              <span class="revenue-delta delta-neg">↓ 1.8% vs last quarter</span>
+            </div>
+            <div class="revenue-stat">
+              <span class="revenue-value">€47K</span>
+              <span class="revenue-label">Avg Deal Size</span>
+              <span class="revenue-delta delta-pos">↑ 0.4% vs last quarter</span>
+            </div>
+            <div class="revenue-stat">
+              <span class="revenue-value">31%</span>
+              <span class="revenue-label">Target Attainment</span>
+              <span class="revenue-delta delta-neg">↓ 12% vs last quarter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Company overview KPI grid — hint for Puzzle 4 embedded -->
+        <div class="panel" id="panel-kpi-value">
+          <div class="panel-header">
+            <span class="panel-title">Company Overview</span>
+          </div>
+          <div class="panel-body">
+            <div class="kpi-grid">
+              <div class="kpi-box">
+                <span class="kpi-box-num">142</span>
+                <span class="kpi-box-label">Total Employees</span>
+              </div>
+              <div class="kpi-box">
+                <span class="kpi-box-num">11h</span>
+                <span class="kpi-box-label">Avg Meeting Hours/Week</span>
+              </div>
+              <div class="kpi-box">
+                <span class="kpi-box-num">847</span>
+                <span class="kpi-box-label">Days Since Last Raise</span>
+              </div>
+              <div class="kpi-box kpi-box-accent">
+                <span class="kpi-box-num">GREED</span>
+                <span class="kpi-box-label">Core Company Value</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Headcount bar chart — decorative -->
+        <div class="panel" id="panel-headcount">
+          <div class="panel-header">
+            <span class="panel-title">Headcount by Department</span>
+            <span class="panel-subtitle">Q4 2025</span>
+          </div>
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="chart-headcount"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employee Morale line chart — decorative -->
+        <div class="panel" id="panel-meetings">
+          <div class="panel-header">
+            <span class="panel-title">Employee Morale Q1–Q4</span>
+            <span class="panel-subtitle">Index score · 0–100</span>
+          </div>
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="chart-morale"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 Productivity Breakdown doughnut — decorative -->
+        <div class="panel" id="panel-pie">
+          <div class="panel-header">
+            <span class="panel-title">Q4 Productivity Breakdown</span>
+            <span class="panel-subtitle">Time allocation analysis</span>
+          </div>
+          <div class="panel-body">
+            <div class="chart-container">
+              <canvas id="chart-pie"></canvas>
+            </div>
+            <div class="pie-legend">
+              <div class="pie-legend-item">
+                <span class="pie-dot" style="background:#c4b5fd"></span>Meetings (35%)
+              </div>
+              <div class="pie-legend-item">
+                <span class="pie-dot" style="background:#a5b4fc"></span>Approvals (25%)
+              </div>
+              <div class="pie-legend-item">
+                <span class="pie-dot" style="background:#93c5fd"></span>Unclear (25%)
+              </div>
+              <div class="pie-legend-item">
+                <span class="pie-dot" style="background:#d1d5db"></span>Work (15%)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Budget Calculations — Puzzle 2 -->
+        <div class="panel panel-wide" id="panel-budget">
+          <div class="panel-header">
+            <span class="panel-title">Budget Calculations</span>
+            <span class="panel-subtitle">FY 2025</span>
+          </div>
+          <div class="panel-body">
+            <p class="panel-placeholder">Pending review&hellip;</p>
+          </div>
+        </div>
+
+        <!-- Expense Breakdown — Puzzle 3, blurred until Puzzle 2 complete -->
+        <div class="panel panel-wide panel-blurred" id="panel-expenses">
+          <div class="panel-header">
+            <span class="panel-title">Expense Breakdown</span>
+            <span class="panel-subtitle">Monthly breakdown</span>
+          </div>
+          <div class="panel-body">
+            <p class="panel-placeholder">Access restricted</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
