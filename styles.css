@@ -803,6 +803,20 @@ body {
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
 }
 
+.asset-error {
+  font-size: 0.75rem;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+.asset-success {
+  font-size: 0.78rem;
+  color: #16a34a;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 .asset-table {
   width: 100%;
   border-collapse: collapse;
