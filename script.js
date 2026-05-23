@@ -86,10 +86,103 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 
   gameState.currentTask = 2;
   updateTaskList();
+  document.getElementById('budget-total').classList.add('budget-active');
 
   this.disabled = true;
   this.textContent = 'Submitted';
 });
+
+/* ============================================================
+   PUZZLE 2 — Budget Total Fix
+============================================================ */
+(function () {
+  const totalCell = document.getElementById('budget-total');
+  let editing = false;
+
+  totalCell.addEventListener('click', function () {
+    if (!totalCell.classList.contains('budget-active')) return;
+    if (editing) return;
+    editing = true;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'budget-edit-wrapper';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'budget-input';
+    input.value = '€13,000';
+    input.setAttribute('aria-label', 'Correct Q1 total');
+
+    const confirm = document.createElement('button');
+    confirm.className = 'budget-confirm';
+    confirm.textContent = '✓';
+
+    const error = document.createElement('div');
+    error.className = 'budget-error hidden';
+    error.textContent = 'Incorrect. Try again.';
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(confirm);
+
+    totalCell.textContent = '';
+    totalCell.appendChild(wrapper);
+
+    const tfoot = totalCell.closest('tfoot');
+    tfoot.insertAdjacentElement('afterend', (() => {
+      const row = document.createElement('tr');
+      const td = document.createElement('td');
+      td.colSpan = 2;
+      td.appendChild(error);
+      row.appendChild(td);
+      return row;
+    })());
+
+    input.focus();
+    input.select();
+
+    function validate() {
+      const raw = input.value.replace(/[€,\s]/g, '');
+      if (raw === '13100') {
+        playChime();
+
+        gameState.keysFound = 2;
+        document.getElementById('key-count').textContent = '2';
+
+        gameState.currentTask = 3;
+        updateTaskList();
+        document.querySelector('.main-content').style.overflowY = 'auto';
+
+        document.getElementById('panel-expenses').classList.remove('panel-blurred');
+
+        totalCell.classList.remove('budget-active');
+        totalCell.classList.add('budget-solved');
+        totalCell.textContent = '€13,100';
+
+        tfoot.nextElementSibling.remove();
+
+        const msg = document.createElement('p');
+        msg.className = 'budget-message';
+        msg.textContent = 'Budget corrected. Something else just became visible.';
+        tfoot.insertAdjacentElement('afterend', (() => {
+          const row = document.createElement('tr');
+          const td = document.createElement('td');
+          td.colSpan = 2;
+          td.appendChild(msg);
+          row.appendChild(td);
+          return row;
+        })());
+        requestAnimationFrame(() => { msg.style.opacity = '1'; });
+      } else {
+        error.classList.remove('hidden');
+      }
+    }
+
+    confirm.addEventListener('click', validate);
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') validate();
+    });
+  });
+}());
 
 /* ============================================================
    DECORATIVE CHARTS
