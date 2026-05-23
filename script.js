@@ -1,4 +1,10 @@
 /* ============================================================
+   SCROLL CONTROL
+   .main-content is the scroll container, not document.body.
+   Task 3 unlock: document.querySelector('.main-content').style.overflowY = 'auto';
+============================================================ */
+
+/* ============================================================
    DECORATIVE CHARTS
    Initialized on page load. No interactivity.
 ============================================================ */
