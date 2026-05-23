@@ -825,7 +825,6 @@ body {
 }
 
 .asset-table th {
-  text-align: left;
   color: var(--text-muted);
   font-weight: 600;
   font-size: 0.7rem;
