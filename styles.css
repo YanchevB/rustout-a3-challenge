@@ -92,3 +92,362 @@ body {
   color: var(--text-muted);
   margin-bottom: 40px;
 }
+
+/* ============================================================
+   VIEW 2 — DASHBOARD SHELL
+============================================================ */
+#dashboard {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14.5px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.logo-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 8px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.1s ease, color 0.1s ease;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-item.active {
+  background: var(--accent-light);
+  color: var(--accent);
+  pointer-events: none;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.task-list {
+  flex-shrink: 0;
+  margin: 0 8px 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.task-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.task-text {
+  font-size: 0.8rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+.topbar {
+  position: fixed;
+  left: 220px;
+  top: 0;
+  right: 0;
+  height: 56px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 99;
+}
+
+.topbar-company {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.key-counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 5px 14px;
+  border-radius: 20px;
+}
+
+/* ============================================================
+   MAIN CONTENT & PANEL GRID
+============================================================ */
+.main-content {
+  margin-left: 220px;
+  margin-top: 56px;
+  padding: 24px;
+  min-height: calc(100vh - 56px);
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ============================================================
+   PANEL CARDS
+============================================================ */
+.panel {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-wide {
+  grid-column: span 2;
+}
+
+.panel-blurred {
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.panel-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.panel-subtitle {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.panel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-placeholder {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.panel-chart-area {
+  flex: 1;
+  background: var(--bg);
+  border-radius: 8px;
+  min-height: 80px;
+}
+
+/* KPI widgets */
+.kpi-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.kpi-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   REVENUE PANEL
+============================================================ */
+.revenue-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.revenue-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.revenue-value {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.revenue-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.revenue-delta {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.delta-pos { color: #16a34a; }
+.delta-neg { color: #dc2626; }
+
+/* ============================================================
+   COMPANY OVERVIEW — 4-stat KPI grid
+============================================================ */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex: 1;
+}
+
+.kpi-box {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpi-box-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.kpi-box-label {
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.kpi-box-accent {
+  background: var(--accent-light);
+}
+
+.kpi-box-accent .kpi-box-num {
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   CHART CONTAINERS (Chart.js canvases)
+============================================================ */
+.chart-container {
+  position: relative;
+  flex: 1;
+  min-height: 110px;
+}
+
+/* ============================================================
+   PIE LEGEND (custom — replaces Chart.js built-in)
+============================================================ */
+.pie-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+.pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.pie-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
