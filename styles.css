@@ -53,12 +53,17 @@ body {
   transition: background 0.15s ease, transform 0.1s ease;
 }
 
-.btn-primary:hover {
+.btn-primary:not(:disabled):hover {
   background: #5a52e0;
 }
 
-.btn-primary:active {
+.btn-primary:not(:disabled):active {
   transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ============================================================
