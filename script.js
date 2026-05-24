@@ -41,6 +41,9 @@ if (btnWakeUp) {
     document.body.style.overflow = 'hidden';
     updateTaskList();
     initCharts();
+    setTimeout(function () {
+      showModal('From Upper Management: "We see that your to-do list in the lower left side has been stacking up, go through it and start working!"');
+    }, 3000);
   });
 }
 
@@ -74,6 +77,39 @@ function playChime() {
     osc.start();
     osc.stop(ctx.currentTime + 0.55);
   } catch (e) {}
+}
+
+function showModal(msg) {
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+
+  const card = document.createElement('div');
+  card.className = 'modal-card';
+
+  const text = document.createElement('p');
+  text.className = 'modal-message';
+  text.textContent = msg;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'modal-close';
+  closeBtn.textContent = 'Got it';
+
+  card.appendChild(text);
+  card.appendChild(closeBtn);
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+
+  requestAnimationFrame(() => overlay.classList.add('modal-visible'));
+
+  function dismiss() {
+    overlay.classList.remove('modal-visible');
+    overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+  }
+
+  closeBtn.addEventListener('click', dismiss);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) dismiss();
+  });
 }
 
 let toastActive = false;
