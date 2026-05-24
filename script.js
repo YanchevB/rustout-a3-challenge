@@ -43,7 +43,7 @@ if (btnWakeUp) {
     initCharts();
     setTimeout(function () {
       showModal('From Upper Management: "We see that your to-do list in the lower left side has been stacking up, go through it and start working!"');
-    }, 3000);
+    }, 2000);
   });
 }
 
@@ -151,7 +151,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   playChime();
 
   gameState.keysFound = 1;
-  document.querySelector('.panel-subtitle').textContent = 'Q1 2025 · Final Draft · Submitted'
+  document.querySelector('.panel-subtitle').textContent = 'Q1 2026 · Final Draft · Submitted'
   document.getElementById('key-counter').classList.remove('hidden');
   document.getElementById('key-count').textContent = '1';
 
