@@ -10,6 +10,10 @@
 
 ---
 
+> **rust-out** *(n.)* — the gradual disengagement that sets in when work becomes too repetitive, too pointless, or too unchallenging. Unlike burnout, which comes from doing too much, rust-out comes from doing too little of anything that matters. You don't burn out — you slowly corrode.
+
+---
+
 A browser-based escape room game set inside a corporate dashboard. You play as an office worker who has been staring at the same screens for too long — and slowly realises the company is hiding something. Work through a series of puzzles hidden inside what looks like a normal analytics dashboard to uncover the truth and escape.
 
 No frameworks, no build steps. Pure HTML, CSS, and vanilla JavaScript.
