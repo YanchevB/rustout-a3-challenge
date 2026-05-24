@@ -19,7 +19,7 @@ const taskMessages = {
   4:   'Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced.',
   5:   'We found them but it seems to be password protected, maybe it is something management values the most?',
   6:   "Well, well, well... these are definitely not company property. This ends now - withdraw the funds now!",
-  7:   'We have to navigate somehow to the exit! Find a way out!'
+  7:   'We have to ESCAPE! Find a way to navigate to the exit!'
 };
 
 /* ============================================================
@@ -357,9 +357,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
         gameState.currentTask++;
         updateTaskList();
 
-        setTimeout(function () {
-          showToast("This feels suffocating, now's the time to escape!", 6000, initEscapeSequence);
-        }, 500);
+        initEscapeSequence();
       }
     }
 
