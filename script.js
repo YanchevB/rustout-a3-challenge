@@ -107,9 +107,6 @@ function showModal(msg) {
   }
 
   closeBtn.addEventListener('click', dismiss);
-  overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) dismiss();
-  });
 }
 
 let toastActive = false;
