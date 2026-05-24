@@ -19,7 +19,7 @@ const taskMessages = {
   4:   'Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced.',
   5:   'We found them but it seems to be password protected, maybe it is something management values the most?',
   6:   "Well, well, well... these are definitely not company property. This has to end - withdraw the funds now!",
-  7:   'We have to ESCAPE! Find a way to navigate to the exit!'
+  7:   'We need to think of a TYPE of ESCAPE! Find a way to navigate to the exit!'
 };
 
 /* ============================================================
