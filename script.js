@@ -71,8 +71,8 @@ function playChime() {
 
     const osc = ctx.createOscillator();
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(784, ctx.currentTime);       // G5
-    osc.frequency.setValueAtTime(1047, ctx.currentTime + 0.07); // C6
+    osc.frequency.setValueAtTime(932, ctx.currentTime);        // Bb5
+    osc.frequency.setValueAtTime(698, ctx.currentTime + 0.18); // F5
     osc.connect(gain);
     osc.start();
     osc.stop(ctx.currentTime + 0.55);
