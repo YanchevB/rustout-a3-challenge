@@ -11,7 +11,6 @@ const gameState = {
 
 /* ============================================================
    TASK MESSAGES
-   currentTask can be 1–6 or the string '4b'.
 ============================================================ */
 const taskMessages = {
   1:   'Find the Q1 report and submit it',
@@ -122,7 +121,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   document.getElementById('key-counter').classList.remove('hidden');
   document.getElementById('key-count').textContent = '1';
 
-  gameState.currentTask = 2;
+  gameState.currentTask++;
   updateTaskList();
   document.getElementById('budget-total').classList.add('budget-active');
 
@@ -186,7 +185,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
         gameState.keysFound = 2;
         document.getElementById('key-count').textContent = '2';
 
-        gameState.currentTask = 3;
+        gameState.currentTask++;
         updateTaskList();
 
         document.getElementById('panel-expenses').classList.remove('panel-blurred');
@@ -246,9 +245,9 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     gameState.scrollUnlocked = true;
     document.querySelector('.main-content').style.overflowY = 'auto';
 
-    showToast("You found something you weren't supposed to see. The way down is open now.", 6000);
+    showToast("You found something you weren't supposed to see. The way down is open now.", 15000);
 
-    gameState.currentTask = 4;
+    gameState.currentTask++;
     updateTaskList();
   });
 }());
@@ -271,6 +270,9 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   document.getElementById('btn-close-cover').addEventListener('click', function () {
     document.getElementById('panel-cover').classList.add('hidden');
     document.getElementById('panel-assets').classList.remove('hidden');
+
+    gameState.currentTask++;
+    updateTaskList();
   });
 
   // Step 3: password form.
@@ -296,7 +298,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     gameState.keysFound = 4;
     document.getElementById('key-count').textContent = '4';
 
-    gameState.currentTask = 5;
+    gameState.currentTask++;
     updateTaskList();
 
     playChime();
@@ -352,7 +354,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 
         document.getElementById('btn-withdraw').textContent = 'Action done';
 
-        gameState.currentTask = 6;
+        gameState.currentTask++;
         updateTaskList();
 
         setTimeout(function () {
