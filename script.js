@@ -79,7 +79,7 @@ function playChime() {
 
 let toastActive = false;
 
-function showToast(msg, duration) {
+function showToast(msg, duration, onDismiss) {
   toastActive = true;
 
   const toast = document.createElement('div');
@@ -102,7 +102,10 @@ function showToast(msg, duration) {
   function dismiss() {
     toastActive = false;
     toast.classList.remove('toast-visible');
-    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+    toast.addEventListener('transitionend', function () {
+      toast.remove();
+      if (onDismiss) onDismiss();
+    }, { once: true });
   }
 
   close.addEventListener('click', dismiss);
@@ -353,7 +356,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
         updateTaskList();
 
         setTimeout(function () {
-          showToast("This feels suffocating, now's the time to escape!", 6000);
+          showToast("This feels suffocating, now's the time to escape!", 6000, initEscapeSequence);
         }, 500);
       }
     }
@@ -361,6 +364,95 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     requestAnimationFrame(tick);
   });
 }());
+
+/* ============================================================
+   PUZZLE 6 — Escape Sequence + Exit
+============================================================ */
+function endGame() {
+  document.body.style.overflow = '';
+  document.getElementById('dashboard').classList.add('hidden');
+  document.getElementById('end-screen').classList.remove('hidden');
+}
+
+function initEscapeSequence() {
+  const sequence = ['E', 'S', 'C', 'A', 'P', 'E'];
+  let position = 0;
+
+  const slotsWrapper = document.createElement('div');
+  slotsWrapper.className = 'escape-slots';
+
+  const slots = sequence.map(function (letter) {
+    const slot = document.createElement('span');
+    slot.className = 'escape-slot';
+    slot.textContent = '';
+    slotsWrapper.appendChild(slot);
+    return slot;
+  });
+
+  const keyCounter = document.getElementById('key-counter');
+  keyCounter.parentNode.insertBefore(slotsWrapper, keyCounter);
+
+  function handleKey(e) {
+    if (!/^[a-zA-Z]$/.test(e.key)) return;
+
+    const key = e.key.toUpperCase();
+
+    if (key !== sequence[position]) {
+      slots.forEach(function (s) {
+        s.classList.remove('escape-slot-active');
+        s.textContent = '';
+      });
+      position = 0;
+    }
+
+    if (key === sequence[position]) {
+      slots[position].textContent = sequence[position];
+      slots[position].classList.add('escape-slot-active');
+      position++;
+
+      if (position === sequence.length) {
+        document.removeEventListener('keydown', handleKey);
+        setTimeout(function () {
+          slotsWrapper.remove();
+          showExitButton();
+        }, 600);
+      }
+    }
+  }
+
+  document.addEventListener('keydown', handleKey);
+
+  function showExitButton() {
+    gameState.exitClicksRemaining = gameState.keysFound;
+
+    const exitWrapper = document.createElement('div');
+    exitWrapper.className = 'exit-wrapper';
+
+    const exitBtn = document.createElement('button');
+    exitBtn.className = 'btn-exit';
+    exitBtn.textContent = 'EXIT';
+
+    const exitHint = document.createElement('span');
+    exitHint.className = 'exit-hint';
+    exitHint.textContent = 'Keys collected: ' + gameState.keysFound + '. Each one buys you one click of freedom.';
+
+    exitWrapper.appendChild(exitBtn);
+    exitWrapper.appendChild(exitHint);
+
+    const kc = document.getElementById('key-counter');
+    kc.parentNode.insertBefore(exitWrapper, kc);
+
+    exitBtn.addEventListener('click', function () {
+      gameState.exitClicksRemaining--;
+      if (gameState.exitClicksRemaining <= 0) {
+        endGame();
+      } else {
+        exitHint.textContent = gameState.exitClicksRemaining +
+          (gameState.exitClicksRemaining === 1 ? ' click' : ' clicks') + ' remaining.';
+      }
+    });
+  }
+}
 
 /* ============================================================
    DECORATIVE CHARTS
