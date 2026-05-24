@@ -145,6 +145,55 @@ function showToast(msg, duration, onDismiss) {
 }
 
 /* ============================================================
+   FLY-KEY ANIMATION
+============================================================ */
+function flyKey(fromEl, onLand) {
+  const toEl = document.getElementById('key-counter');
+  const fromRect = fromEl.getBoundingClientRect();
+  const toRect = toEl.getBoundingClientRect();
+
+  const startX = fromRect.left + fromRect.width / 2;
+  const startY = fromRect.top + fromRect.height / 2;
+  const endX = toRect.left + toRect.width / 2;
+  const endY = toRect.top + toRect.height / 2;
+
+  const el = document.createElement('span');
+  el.className = 'fly-key';
+  el.textContent = '🔑';
+  el.style.left = startX + 'px';
+  el.style.top = startY + 'px';
+  document.body.appendChild(el);
+
+  const duration = 650;
+  const startTime = performance.now();
+
+  function easeInOut(t) { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; }
+
+  function tick(now) {
+    const t = Math.min((now - startTime) / duration, 1);
+    const e = easeInOut(t);
+
+    el.style.left = (startX + (endX - startX) * e) + 'px';
+    el.style.top  = (startY + (endY - startY) * e + Math.sin(t * Math.PI) * -55) + 'px';
+    el.style.transform = 'translate(-50%, -50%) scale(' + (1.3 - 0.8 * e) + ')';
+    el.style.opacity = t > 0.75 ? String(1 - (t - 0.75) / 0.25) : '1';
+
+    if (t < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.remove();
+      toEl.classList.add('key-counter-pop');
+      toEl.addEventListener('animationend', function () {
+        toEl.classList.remove('key-counter-pop');
+      }, { once: true });
+      if (onLand) onLand();
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+/* ============================================================
    PUZZLE 1 — Q1 Report Submit
 ============================================================ */
 document.getElementById('btn-submit-q1').addEventListener('click', function () {
@@ -153,11 +202,14 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   gameState.keysFound = 1;
   document.querySelector('.panel-subtitle').textContent = 'Q1 2026 · Final Draft · Submitted'
   document.getElementById('key-counter').classList.remove('hidden');
-  document.getElementById('key-count').textContent = '1';
 
   gameState.currentTask++;
   updateTaskList();
   document.getElementById('budget-total').classList.add('budget-active');
+
+  flyKey(this, function () {
+    document.getElementById('key-count').textContent = '1';
+  });
 
   this.disabled = true;
   this.textContent = 'Submitted';
@@ -217,7 +269,9 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
         playChime();
 
         gameState.keysFound = 2;
-        document.getElementById('key-count').textContent = '2';
+        flyKey(confirm, function () {
+          document.getElementById('key-count').textContent = '2';
+        });
 
         gameState.currentTask++;
         updateTaskList();
@@ -276,7 +330,9 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     playChime();
 
     gameState.keysFound = 3;
-    document.getElementById('key-count').textContent = '3';
+    flyKey(this, function () {
+      document.getElementById('key-count').textContent = '3';
+    });
 
     gameState.scrollUnlocked = true;
     document.querySelector('.main-content').style.overflowY = 'auto';
@@ -304,6 +360,12 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
 
   // Step 2: X closes decoy, reveals asset panel.
   document.getElementById('btn-close-cover').addEventListener('click', function () {
+    playChime();
+    gameState.keysFound = 4;
+    flyKey(this, function () {
+      document.getElementById('key-count').textContent = '4';
+    });
+
     document.getElementById('panel-cover').classList.add('hidden');
     document.getElementById('panel-assets').classList.remove('hidden');
 
@@ -328,11 +390,13 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
     }
 
     // Correct — remove overlay.
+    gameState.keysFound = 5;
+    flyKey(submitBtn, function () {
+      document.getElementById('key-count').textContent = '5';
+    });
+
     assetLock.classList.add('hidden');
     errorEl.classList.add('hidden');
-
-    gameState.keysFound = 4;
-    document.getElementById('key-count').textContent = '4';
 
     gameState.currentTask++;
     updateTaskList();
@@ -388,7 +452,14 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
       } else {
         cells.forEach(function (cell) { cell.textContent = '€0'; });
 
-        document.getElementById('btn-withdraw').textContent = 'Action done';
+        const withdrawBtn = document.getElementById('btn-withdraw');
+        withdrawBtn.textContent = 'Action done';
+
+        playChime();
+        gameState.keysFound = 6;
+        flyKey(withdrawBtn, function () {
+          document.getElementById('key-count').textContent = '6';
+        });
 
         gameState.currentTask++;
         updateTaskList();
