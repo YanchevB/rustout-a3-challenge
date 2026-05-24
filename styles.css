@@ -898,6 +898,13 @@ body {
   padding-top: 10px;
 }
 
+.asset-table th.text-right,
+.asset-table td.text-right {
+  min-width: 7.5rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
 .btn-danger { background: #dc2626; }
 .btn-danger:hover { background: #b91c1c; }
 
@@ -1006,8 +1013,9 @@ body {
 .escape-slot {
   width: 26px;
   height: 26px;
-  border: 1.5px solid var(--border);
+  border: 1.5px solid #9ca3af;
   border-radius: 6px;
+  background: #f3f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1049,7 +1057,7 @@ body {
 .exit-hint {
   font-size: 0.72rem;
   color: var(--text-muted);
-  max-width: 220px;
+  width: 220px;
   line-height: 1.4;
 }
 
