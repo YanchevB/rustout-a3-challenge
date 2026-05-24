@@ -13,13 +13,13 @@ const gameState = {
    TASK MESSAGES
 ============================================================ */
 const taskMessages = {
-  1:   'Find the Q1 report and submit it',
-  2:   'Fix the budget calculations for the following months',
-  3:   'Find out which expense is costing the company the most',
-  4:   'Interesting, the boss only thinks about his holidays.. Find out where his assets are',
-  5:   'Find a way to crack the password',
-  6:   "This will teach him, let's take it away from him!",
-  7:   'Get out. Now.'
+  1:   'The Q1 report is still missing. It is high time the managers see it. Find the report and submit it.',
+  2:   'There seems to be something wrong with the budgeting, most likely a mistake, find out what it is.',
+  3:   "Something felt off in yesterday's meeting, some company expenses seemed to be way higher than the rest. See what you can find.",
+  4:   'Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced.',
+  5:   'We found them but it seems to be password protected, maybe it is something management values the most?',
+  6:   "Well, well, well... these are definitely not company property. This ends now - withdraw the funds now!",
+  7:   'We have to navigate somehow to the exit! Find a way out!'
 };
 
 /* ============================================================
