@@ -42,7 +42,7 @@ if (btnWakeUp) {
     updateTaskList();
     initCharts();
     setTimeout(function () {
-      showModal('From Upper Management: "We see that your to-do list in the lower left side has been stacking up, go through it and start working!"');
+      showModal("Note to self: my to-do list in the lower left corner has been stacking up recently and I can't even remember writing some of the tasks. I need to start working before management finds out..");
     }, 2000);
   });
 }
