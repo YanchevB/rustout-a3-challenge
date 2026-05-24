@@ -14,7 +14,7 @@ const gameState = {
 ============================================================ */
 const taskMessages = {
   1:   'The Q1 report is still missing. It is high time the managers see it. Find the report and submit it.',
-  2:   'There seems to be something wrong with the budgeting, most likely a mistake, find out what it is.',
+  2:   'There is something wrong with the budget again. It is definitely an accounting error, fix it now.',
   3:   "Something felt off in yesterday's meeting, some company expenses seemed to be way higher than the rest. See what you can find.",
   4:   'Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced.',
   5:   'We found them but it seems to be password protected, maybe it is something management values the most?',
@@ -151,6 +151,7 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
   playChime();
 
   gameState.keysFound = 1;
+  document.querySelector('.panel-subtitle').textContent = 'Q1 2025 · Final Draft · Submitted'
   document.getElementById('key-counter').classList.remove('hidden');
   document.getElementById('key-count').textContent = '1';
 
@@ -226,6 +227,8 @@ document.getElementById('btn-submit-q1').addEventListener('click', function () {
         totalCell.classList.remove('budget-active');
         totalCell.classList.add('budget-solved');
         totalCell.textContent = '€13,100';
+
+        document.querySelector('.budget-note').classList.add('hidden');
 
         tfoot.nextElementSibling.remove();
 
