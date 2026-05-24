@@ -79,49 +79,49 @@ Each puzzle awards one key. Six keys total. The number of keys collected determi
 ## Puzzle Solutions
 
 ### Puzzle 1 — Submit the Q1 Report
-**Task:** "The Q1 report is still missing. Find the report and submit it."
+**Task:** "The Q1 report is still missing. It is high time the managers see it. Find the report and submit it."
 
 Click the **Submit Report** button inside the Q1 Report panel. The report status updates to Submitted, the key counter appears in the top bar, and the Budget Calculations panel becomes interactive.
 
 ---
 
 ### Puzzle 2 — Fix the Budget Total
-**Task:** "There is something wrong with the budget again. Fix it now."
+**Task:** "There is something wrong with the project budget calculations again. It is definitely an accounting error, fix it now."
 
 The Q1 Total in the Budget Calculations panel shows **€13,000**, but the three monthly figures add up to €4,200 + €3,800 + €5,100 = **€13,100**. Click the total cell and type `13100` (with or without the € and comma), then confirm. The Expense Breakdown panel unblurs.
 
 ---
 
 ### Puzzle 3 — Find the Suspicious Expense
-**Task:** "Some company expenses seemed to be way higher than the rest."
+**Task:** "Something felt off in yesterday's meeting, some company expenses seemed to be way higher than the rest. See what you can find."
 
 In the Expense Breakdown panel, click the **Executive Discretionary Fund** row (the one with €379,700 — slightly higher than all the others). Clicking any other row gives a "No, that doesn't seem to be it" toast. Clicking the right row unlocks vertical scrolling on the page, allowing you to scroll down to hidden panels.
 
 ---
 
 ### Puzzle 4 (Part 1) — Dismiss the Decoy Panel
-**Task:** "Maybe the boss is hiding these assets somewhere unannounced."
+**Task:** "Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced."
 
 After solving Puzzle 3, scroll down. An Internal Announcements panel appears with a small **✕** button in its top-right corner (only visible after Puzzle 3 is complete). Click the ✕ to close it. The hidden asset panel appears beneath it.
 
 ---
 
 ### Puzzle 4 (Part 2) — Unlock the Asset Panel
-**Task:** "It seems to be password protected — maybe it is something management values the most?"
+**Task:** "We found them but it seems to be password protected, maybe it is something management values the most?"
 
 The asset panel is covered by a password prompt. The Company Overview panel elsewhere on the dashboard contains four KPI boxes; the bottom-right one reads **GREED** under "Core Company Value". Type `greed` (case-insensitive) into the password field and click Unlock.
 
 ---
 
 ### Puzzle 5 — Withdraw All Assets
-**Task:** "These are definitely not company property. Withdraw the funds now!"
+**Task:** "Well, well, well... these are definitely not company property. This has to end - withdraw the funds now!"
 
 Click the **Withdraw All Assets** button that appears after unlocking the asset panel. The asset values count down to €0 over 1.5 seconds.
 
 ---
 
 ### Puzzle 6 — Escape
-**Task:** "We have to ESCAPE! Find a way to navigate to the exit!"
+**Task:** 'We need to think of a TYPE of ESCAPE! Find a way to navigate to the exit!'
 
 Six letter boxes appear in the top bar. Type the word **ESCAPE** on your keyboard one letter at a time. Each correct letter lights up its box in purple. A wrong letter resets the sequence. Once all six letters are filled, an **EXIT** button appears.
 
