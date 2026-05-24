@@ -852,6 +852,57 @@ body {
 .btn-danger:hover { background: #b91c1c; }
 
 /* ============================================================
+   CENTERED MODAL
+============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.modal-visible { opacity: 1; }
+
+.modal-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 28px 32px;
+  max-width: 380px;
+  width: calc(100% - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-message {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.modal-close {
+  align-self: flex-end;
+  padding: 7px 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.modal-close:hover { background: #5a52e0; }
+
+/* ============================================================
    TOAST (Puzzle 3+)
 ============================================================ */
 .toast {
