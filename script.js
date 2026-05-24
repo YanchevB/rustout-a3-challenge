@@ -18,9 +18,9 @@ const taskMessages = {
   2:   'Fix the budget calculations for the following months',
   3:   'Find out which expense is costing the company the most',
   4:   'Interesting, the boss only thinks about his holidays.. Find out where his assets are',
-  '4b':'Find a way to crack the password',
-  5:   "This will teach him, let's take it away from him!",
-  6:   'Get out. Now.'
+  5:   'Find a way to crack the password',
+  6:   "This will teach him, let's take it away from him!",
+  7:   'Get out. Now.'
 };
 
 /* ============================================================
