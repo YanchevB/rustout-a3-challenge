@@ -18,7 +18,7 @@ const taskMessages = {
   3:   "Something felt off in yesterday's meeting, some company expenses seemed to be way higher than the rest. See what you can find.",
   4:   'Hmmm, Executive Discretionary funds you say.. Maybe the boss is hiding these assets somewhere unannounced.',
   5:   'We found them but it seems to be password protected, maybe it is something management values the most?',
-  6:   "Well, well, well... these are definitely not company property. This ends now - withdraw the funds now!",
+  6:   "Well, well, well... these are definitely not company property. This has to end - withdraw the funds now!",
   7:   'We have to ESCAPE! Find a way to navigate to the exit!'
 };
 
@@ -551,6 +551,7 @@ function initEscapeSequence() {
 
     exitBtn.addEventListener('click', function () {
       gameState.exitClicksRemaining--;
+      document.getElementById('key-count').textContent = String(gameState.exitClicksRemaining);
       if (gameState.exitClicksRemaining <= 0) {
         endGame();
       } else {
